@@ -1,9 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <algorithm> 
 #include "DoublyLinkedList.h"
-
-using namespace std;
 
 int main() {
     DoublyLinkedList list;
@@ -17,10 +16,15 @@ int main() {
 
     string word;
     while (inFile >> word) {
+        transform(word.begin(), word.end(), word.begin(),
+              [](unsigned char c){ return tolower(c); });
 
         if (word == "delete") {
             string nameToDelete;
             inFile >> nameToDelete;
+            transform(nameToDelete.begin(), nameToDelete.end(),
+                  nameToDelete.begin(),
+                  [](unsigned char c){ return tolower(c); });
             list.remove(nameToDelete);
         } 
         else {

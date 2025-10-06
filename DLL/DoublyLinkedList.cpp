@@ -1,7 +1,18 @@
 #include "DoublyLinkedList.h"
 #include <fstream>
 #include <iostream>
-#include "Node.h"
+#include <algorithm>
+
+///Constructor
+Node::Node(string _data) {
+    data = _data;
+    next = nullptr;
+    prev = nullptr;
+}
+
+///Deconstructor
+Node::~Node() {
+}
 
 DoublyLinkedList::DoublyLinkedList() {
     head = nullptr;
@@ -18,6 +29,8 @@ DoublyLinkedList::~DoublyLinkedList() {
 }
 
 void DoublyLinkedList::insert(string data) {
+    transform(data.begin(), data.end(), data.begin(),
+              [](unsigned char c){ return tolower(c); });
     Node* node = new Node(data);
 
     if(!head) {  //no other nodes

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef NODE_H
+#define NODE_H
 #include <string>
 using namespace std;
 
@@ -12,15 +13,5 @@ public:
     ~Node();
 };
 
-///Constructor
-Node::Node(string _data) {
-    data = _data;
-    next = nullptr;
-    prev = nullptr;
-}
 
-///Deconstructor
-Node::~Node() {
-    delete next;
-    delete prev;
-}
+#endif // NODE_H
